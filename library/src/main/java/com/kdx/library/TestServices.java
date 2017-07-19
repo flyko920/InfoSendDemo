@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.kdx.library.utils.LockScreenUtils;
@@ -17,7 +16,6 @@ import com.kdx.library.utils.LockScreenUtils;
 */
 
 public class TestServices extends Service {
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         Log.i("999","  ==  TestServices  onBind  ==  ");
