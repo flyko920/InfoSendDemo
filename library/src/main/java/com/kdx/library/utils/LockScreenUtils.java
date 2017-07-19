@@ -38,7 +38,8 @@ public class LockScreenUtils {
 //            pm.isSustainedPerformanceModeSupported()是否支持持续性能模式
 //            pm.reboot();重启
 //            pm.isWakeLockLevelSupported()是否支持后锁级别
-            pm.isScreenOn();
+//            pm.isScreenOn();
+
         }
         return wl;
     }
@@ -50,4 +51,15 @@ public class LockScreenUtils {
     public static void 休眠() {
 
     }
+
+
+
+
+
+
+
+
+
+
+
 }
