@@ -26,43 +26,18 @@ public class TestServices extends Service {
     public void onCreate() {
         super.onCreate();
         Log.i("999","  ==  TestServices  onCreate  ==  ");
-//        LockScreenUtils.getWakeLock(this).acquire(5 * 1000);        //唤醒
-        LockScreenUtils.getWakeLock(this).acquire();        //唤醒
-//        acquireWakeLock();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                LockScreenUtils.getWakeLock(TestServices.this).setReferenceCounted(false);
-                LockScreenUtils.getWakeLock(TestServices.this).release();
-                Log.i("999","  ==  TestServices  release  ==  ");
-//                releaseWakeLock();
-            }
-        },5 * 1000);
+        LockScreenUtils.getWakeLock(this).acquire(20 * 1000);        //唤醒
+//        LockScreenUtils.getWakeLock(this).acquire();        //唤醒
+////        acquireWakeLock();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                LockScreenUtils.getWakeLock(TestServices.this).setReferenceCounted(false);
+//                LockScreenUtils.getWakeLock(TestServices.this).release();
+//                Log.i("999","  ==  TestServices  release  ==  ");
+////                releaseWakeLock();
+//            }
+//        },5 * 1000);
 
-    }
-
-
-    private PowerManager.WakeLock wakeLock = null;
-
-    private void acquireWakeLock() {
-        if (null == wakeLock) {
-            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK
-                    | PowerManager.ON_AFTER_RELEASE, getClass()
-                    .getCanonicalName());
-            if (null != wakeLock) {
-                Log.i("999", "call acquireWakeLock");
-                wakeLock.acquire();
-            }
-        }
-    }
-
-    // 释放设备电源锁
-    private void releaseWakeLock() {
-        if (null != wakeLock && wakeLock.isHeld()) {
-            Log.i("999", "call releaseWakeLock");
-            wakeLock.release();
-            wakeLock = null;
-        }
     }
 }
