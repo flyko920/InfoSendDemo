@@ -15,13 +15,8 @@ import java.io.InputStream;
 public class PowerUtils2 {
 
     public static void sendKeyCode(int keyCode) {
-//        try {
-//            Instrumentation inst = new Instrumentation();
-//            inst.sendKeyDownUpSync( keyCode );
-//        } catch (Exception e) {
-//            Log.e("999", "  = 在执行 input keycode 时出错  == "+e.toString());
-//        }
-        String[] args = {"input", "keyevnet", keyCode + ""};
+        String[] args = {"input", "keyevent", keyCode + ""};
+        Log.i("999", " = input " + args[1] + " " + keyCode + " = ");
             String result = "";
             ProcessBuilder processBuilder = new ProcessBuilder(args);
             Process process = null;

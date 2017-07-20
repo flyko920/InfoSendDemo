@@ -1,9 +1,10 @@
 package com.kdx.library.utils;
 
-import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.os.PowerManager;
+
+import com.kdx.library.SDKconfig;
 
 /**
  * 执行唤醒 休眠
@@ -44,16 +45,25 @@ public class LockScreenUtils {
         return wl;
     }
 
-    public static void 唤醒() {
+    public static void 唤醒(Service activity) {
+        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        if (!pm.isScreenOn()){
+            CommandUtils.exe(SDKconfig.WAKE_LOCK_COMMAND);
+        }
 
     }
 
-    public static void 休眠() {
-
+    /**
+     *
+     * @param activity
+     * @param brightOrDim       true == 亮屏； flase == 灭屏
+     */
+    public static void 休眠(Service activity,boolean brightOrDim) {
+        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        if (pm.isScreenOn()){
+            CommandUtils.exe(SDKconfig.WAKE_LOCK_COMMAND);
+        }
     }
-
-
-
 
 
 
