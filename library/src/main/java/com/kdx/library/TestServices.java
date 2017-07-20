@@ -34,14 +34,14 @@ public class TestServices extends Service {
             @Override
             public void run() {
                 Log.i("999", "  ==  TestServices  Runnable   run  ==  ");
-                LockScreenUtils.休眠();
+                LockScreenUtils.休眠(TestServices.this);
                 showIsScreen();
                 try {
                     Thread.sleep(20 * 1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                LockScreenUtils.唤醒();
+                LockScreenUtils.唤醒(TestServices.this);
                 showIsScreen();
             }
         }, 5 * 1000);
@@ -58,6 +58,6 @@ public class TestServices extends Service {
 
     private void showIsScreen(){
         PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
-        Log.i("999", "  == 屏幕是否亮起 ==  "+pm.isScreenOn());
+
     }
 }
