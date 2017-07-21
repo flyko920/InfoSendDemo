@@ -2,7 +2,10 @@ package com.kdx.library.utils;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
+
+import com.kdx.library.SDKconfig;
 
 /**
  * Created by kdx on 2017/7/18.
@@ -10,6 +13,7 @@ import android.view.View;
  */
 
 public class ScreenShotsUtils {
+
 
     //这种方法状态栏是空白，显示不了状态栏的信息
     private void saveCurrentImage(Activity context) {
@@ -42,6 +46,14 @@ public class ScreenShotsUtils {
 //                Log.i("Show", e.toString());
 //            }
 //        }
+    }
+
+    public static void screenCap(){
+        CommandUtils.exe(SDKconfig.SCREEN_CAP);
+    }
+
+    public static void screenRecord(){
+        CommandUtils.exe(SDKconfig.SCREEN_RECORD);
     }
 
 }

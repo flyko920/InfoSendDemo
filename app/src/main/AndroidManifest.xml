@@ -4,8 +4,6 @@
     package="com.kdx.infosenddemo">
 
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
 
     <application
         android:allowBackup="true"
@@ -18,6 +16,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <layout android:defaultHeight="500dp"
+                android:defaultWidth="600dp"
+                android:gravity="top|end"
+                android:minimalSize="450dp" />
         </activity>
 
         <service android:name="com.kdx.library.TestServices"/>
