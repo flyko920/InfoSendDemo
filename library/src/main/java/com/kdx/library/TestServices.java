@@ -29,8 +29,6 @@ public class TestServices extends Service {
     public void onCreate() {
         super.onCreate();
         Log.i("999", "  ==  TestServices  onCreate  ==  ");
-//        LockScreenUtils.getWakeLock(this).acquire(20 * 1000);        //唤醒
-//        new Handler().postDelayed(new Test1Runbler(), 5 * 1000);
         new Handler().postDelayed(new Test2Runbler(), 5 * 1000);
     }
 
@@ -38,28 +36,22 @@ public class TestServices extends Service {
 
         @Override
         public void run() {
-            CommandUtils.exe(SDKconfig.WAKE_LOCK_COMMAND);
-            LockScreenUtils.screenBrightOrDIm(TestServices.this, false);
+//            CommandUtils.exe(SDKconfig.WAKE_LOCK_COMMAND);
             try {
+                LockScreenUtils.screenBrightOrDIm(TestServices.this, false);    //灭屏
                 Thread.sleep(10 * 1000);
-                LockScreenUtils.screenBrightOrDIm(TestServices.this, true);
+                LockScreenUtils.screenBrightOrDIm(TestServices.this, true);     //亮屏
                 Thread.sleep(10 * 1000);
-//                PowerUtils.关机();
-//                ScreenShotsUtils.screenCap();
-                ScreenShotsUtils.screenRecord();
+                ScreenShotsUtils.screenCap();                                   //截图
+                Thread.sleep(10 * 1000);
+                ScreenShotsUtils.screenRecord();                                //录屏  10S
+                Thread.sleep(10 * 1000);
+                PowerUtils.关机();                                              //关机
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
-
-
-
-
-
-
-
-
 
 
     class Test1Runbler implements Runnable {
